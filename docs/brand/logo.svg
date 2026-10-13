@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt Spider UI</title>
+  <desc id="desc">Mechanical spider symbol with an outlined geometric Prompt Spider UI wordmark.</desc>
+  <rect width="720" height="160" fill="#090a0a"/>
+  <g transform="translate(30 16)">
+  <g fill="none" stroke="#44d79c" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M52 49 38 35V25L27 12M46 58H36L24 46H9M46 70H36L24 82H9M52 79 38 93V103L27 116"/>
+    <path d="M76 49 90 35V25L101 12M82 58H92L104 46H119M82 70H92L104 82H119M76 79 90 93V103L101 116"/>
+  </g>
+  <g fill="#44d79c">
+    <circle cx="27" cy="12" r="5.5"/><circle cx="9" cy="46" r="5.5"/>
+    <circle cx="9" cy="82" r="5.5"/><circle cx="27" cy="116" r="5.5"/>
+    <circle cx="101" cy="12" r="5.5"/><circle cx="119" cy="46" r="5.5"/>
+    <circle cx="119" cy="82" r="5.5"/><circle cx="101" cy="116" r="5.5"/>
+  </g>
+  <path fill="#f34a87" d="M64 37 84 57V71L64 91 44 71V57Z"/>
+  <path fill="#090a0a" d="M60 53 48 64 60 75V67L56.5 64 60 61ZM68 53 80 64 68 75V67L71.5 64 68 61Z"/>
+  </g>
+  <g transform="translate(194 62) scale(3.5)" fill="none" stroke="#e5e6e7" stroke-width="1.35" stroke-linecap="square" stroke-linejoin="bevel">
+    <path transform="translate(0 0)" d="M0 10V0H4.6L6 1.4V3.6L4.6 5H0"/>
+    <path transform="translate(8 0)" d="M0 10V0H4.6L6 1.4V3.6L4.6 5H0M3.4 5 6 10"/>
+    <path transform="translate(16 0)" d="M1.2 0H4.8L6 1.2V8.8L4.8 10H1.2L0 8.8V1.2Z"/>
+    <path transform="translate(24 0)" d="M0 10V0L3 4.5L6 0V10"/>
+    <path transform="translate(32 0)" d="M0 10V0H4.6L6 1.4V3.6L4.6 5H0"/>
+    <path transform="translate(40 0)" d="M0 0H6M3 0V10"/>
+    <path transform="translate(53 0)" d="M6 0H1.2L0 1.2V3.8L1.2 5H4.8L6 6.2V8.8L4.8 10H0"/>
+    <path transform="translate(61 0)" d="M0 10V0H4.6L6 1.4V3.6L4.6 5H0"/>
+    <path transform="translate(69 0)" d="M0 0H6M3 0V10M0 10H6"/>
+    <path transform="translate(77 0)" d="M0 0H3.6L6 2.4V7.6L3.6 10H0Z"/>
+    <path transform="translate(85 0)" d="M6 0H0V10H6M0 5H4.8"/>
+    <path transform="translate(93 0)" d="M0 10V0H4.6L6 1.4V3.6L4.6 5H0M3.4 5 6 10"/>
+    <path transform="translate(106 0)" d="M0 0V8.8L1.2 10H4.8L6 8.8V0"/>
+    <path transform="translate(114 0)" d="M0 0H6M3 0V10M0 10H6"/>
+  </g>
+</svg>

@@ -1,10 +1,16 @@
+<p align="center"><img src="docs/brand/logo.svg" width="560" alt="Prompt Spider UI"></p>
+
 # Prompt Spider UI
+
+**简体中文 | [English](README.en.md)**
 
 一个用 **原生 JavaScript + Canvas 2D** 实现的动态提示词可视化界面：机械蜘蛛沿文字游走、伸出触手抓取词语，词条沿弧线飞入蛛网，再分流到 `code`、`model` 和 `you` 三条分支。
 
 黑底、粉色扫描、高密度蛛丝、跳动核心，配合可拖动的时间轴和侧边控制抽屉。克隆后即可在本地运行，**无需安装依赖、无需 API Key**。
 
-![Prompt Spider UI 预览](docs/preview.png)
+<p align="center"><img src="docs/preview.gif" width="540" alt="Prompt Spider UI 完整动画：机械蜘蛛抓词、蛛网分流与动态统计"></p>
+
+预览为约 21 秒的循环 GIF，由本地 UI 动画导出，未加速。仓库不包含源 MP4。
 
 ## 快速开始
 
@@ -64,15 +70,19 @@ prompt-spider-ui/
 │   ├── model.js            # 分词、本地规则和确定性状态
 │   ├── prompt.txt          # 默认演示文本
 │   └── favicon.svg
-├── docs/preview.png        # UI 静态预览
+├── docs/
+│   ├── preview.gif         # 完整 UI 循环动画
+│   └── brand/              # Logo、SVG、PNG 和 favicon
 ├── tests/*.test.mjs        # Node.js 内置测试
 ├── server.mjs              # Node.js 本地静态服务
 ├── 启动.cmd                # Windows 启动入口
+├── README.md               # 默认中文文档
+├── README.en.md            # 英文文档
 ├── package.json
 └── LICENSE
 ```
 
-仓库只包含运行 UI 所需的代码、测试、说明和一张 UI 预览图。视频、原片抽帧、研究记录和视频导出工具均未包含；运行动画不需要视频文件。
+仓库包含 UI 代码、测试、说明、品牌资产和 GIF 预览。源 MP4、原片抽帧、研究记录和视频导出工具均未包含；运行动画不需要视频文件。
 
 ## 修改与复用
 
@@ -102,6 +112,22 @@ PORT=4318 npm start
 ```
 
 随后访问 http://127.0.0.1:4318 。若提示端口被占用，关闭已有服务或改用其他端口。
+
+## Logo 与图标
+
+标志把粉色代码核心与八条青绿色机械蛛腿组合起来，沿用界面配色。横版字标使用原生 SVG 路径，不依赖外部字体；独立图标及其 PNG 保留透明背景。
+
+| 文件 | 用途 |
+| --- | --- |
+| [logo.svg](docs/brand/logo.svg) | 深色横版 Logo，README 顶部使用 |
+| [logo-light.svg](docs/brand/logo-light.svg) | 浅色横版 Logo |
+| [icon.svg](docs/brand/icon.svg) | 可编辑、可缩放的透明图标 |
+| [logo.png](docs/brand/logo.png) | 1440 × 320 的 PNG 字标 |
+| [icon-512.png](docs/brand/icon-512.png) | 512 × 512 的透明 PNG 图标 |
+| [favicon.ico](docs/brand/favicon.ico) | ICO 图标，用于浏览器或桌面快捷方式 |
+| [app/favicon.svg](app/favicon.svg) | 页面正在使用的浏览器标签图标 |
+
+设计与复用说明见 [品牌资产说明](docs/brand/README.md)。这些项目品牌资产同样采用 [MIT License](LICENSE)，复用时保留许可证声明即可。
 
 ## 验证
 

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt Spider UI icon</title>
+  <desc id="desc">Eight mint mechanical legs connect to a pink code-bracket core.</desc>
+  <g fill="none" stroke="#44d79c" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M52 49 38 35V25L27 12M46 58H36L24 46H9M46 70H36L24 82H9M52 79 38 93V103L27 116"/>
+    <path d="M76 49 90 35V25L101 12M82 58H92L104 46H119M82 70H92L104 82H119M76 79 90 93V103L101 116"/>
+  </g>
+  <g fill="#44d79c">
+    <circle cx="27" cy="12" r="5.5"/><circle cx="9" cy="46" r="5.5"/>
+    <circle cx="9" cy="82" r="5.5"/><circle cx="27" cy="116" r="5.5"/>
+    <circle cx="101" cy="12" r="5.5"/><circle cx="119" cy="46" r="5.5"/>
+    <circle cx="119" cy="82" r="5.5"/><circle cx="101" cy="116" r="5.5"/>
+  </g>
+  <path fill="#f34a87" d="M64 37 84 57V71L64 91 44 71V57Z"/>
+  <path fill="#090a0a" d="M60 53 48 64 60 75V67L56.5 64 60 61ZM68 53 80 64 68 75V67L71.5 64 68 61Z"/>
+</svg>

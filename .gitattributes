@@ -9,3 +9,5 @@
 *.svg text eol=lf
 *.cmd text eol=crlf
 *.png binary
+*.gif binary
+*.ico binary
