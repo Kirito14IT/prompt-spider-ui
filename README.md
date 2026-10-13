@@ -28,7 +28,8 @@ cd prompt-spider-ui
 npm start
 ```
 
-浏览器打开 http://127.0.0.1:4317。终端出现本地地址后即可访问，按 `Ctrl+C` 停止服务。Windows 用户也可以双击 `启动.cmd`。
+浏览器打开 http://127.0.0.1:4317
+终端出现本地地址后即可访问，按 `Ctrl+C` 停止服务。Windows 用户也可以双击 `启动.cmd`。
 
 本项目没有第三方运行依赖，跳过 `npm install` 即可。推荐使用较新的 Chrome、Edge 或 Firefox；手机尺寸也有适配。服务默认只监听本机 `127.0.0.1`。
 
