@@ -2,7 +2,15 @@
 
 # Prompt Spider UI
 
-**[简体中文](README.md) | English**
+<p align="center">
+  <a href="README.md"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-f34a87?style=flat-square" alt="简体中文"></a>
+  <a href="README.en.md"><img src="https://img.shields.io/badge/Language-English-3b82f6?style=flat-square" alt="English"></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.0.0-8b5cf6?style=flat-square" alt="Version 1.0.0"></a>
+  <a href="#quick-start"><img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=flat-square&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js 20+"></a>
+  <a href="app/main.js"><img src="https://img.shields.io/badge/JavaScript-ES_modules-f7df1e?style=flat-square&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ES modules"></a>
+  <a href="app/renderer.js"><img src="https://img.shields.io/badge/Canvas-2D-06b6d4?style=flat-square" alt="Canvas 2D"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-f0ca57?style=flat-square" alt="License MIT"></a>
+</p>
 
 An animated prompt visualization built with **vanilla JavaScript and Canvas 2D**. A mechanical spider crawls over the text, reaches out to grab words, and sends them along curved paths into a web before routing them to three branches: `code`, `model`, and `you`.
 
