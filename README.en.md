@@ -10,8 +10,6 @@ A black canvas, pink scan highlights, dense web threads, and a pulsing core sit 
 
 <p align="center"><img src="docs/preview.gif" width="540" alt="Full Prompt Spider UI animation: mechanical word grabbing, web routing, and live statistics"></p>
 
-The looping GIF shows about 21 seconds of the local UI animation at its original speed. The source MP4 is not included.
-
 ## Quick start
 
 Install **Node.js 20 or later** and Git, then run:
