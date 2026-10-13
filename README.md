@@ -10,8 +10,6 @@
 
 <p align="center"><img src="docs/preview.gif" width="540" alt="Prompt Spider UI 完整动画：机械蜘蛛抓词、蛛网分流与动态统计"></p>
 
-预览为约 21 秒的循环 GIF，由本地 UI 动画导出，未加速。仓库不包含源 MP4。
-
 ## 快速开始
 
 准备 **Node.js 20 或更高版本**和 Git，然后执行：
