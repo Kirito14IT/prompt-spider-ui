@@ -1,0 +1,18 @@
+{
+  "name": "prompt-spider-ui",
+  "version": "1.0.0",
+  "description": "Interactive Canvas 2D prompt visualization with animated routing, local rules, and JSON export.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kirito14IT/prompt-spider-ui.git"
+  },
+  "bugs": { "url": "https://github.com/Kirito14IT/prompt-spider-ui/issues" },
+  "homepage": "https://github.com/Kirito14IT/prompt-spider-ui#readme",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" }
+}

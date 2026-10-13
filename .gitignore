@@ -1,0 +1,53 @@
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+*.log
+*.tsbuildinfo
+
+# Local credentials and editor files
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Reference material, work records and recording tools
+reference/
+research/
+output/
+scripts/
+task_plan.md
+notes.md
+
+# Never publish recordings, video or audio assets
+*.mp4
+*.m4v
+*.mov
+*.webm
+*.mkv
+*.avi
+*.wmv
+*.flv
+*.mpeg
+*.mpg
+*.m3u8
+*.ts
+*.mp3
+*.wav
+*.m4a
+*.flac
+*.ogg
+
+# Archives and local backups
+*.zip
+*.7z
+*.tar
+*.gz
+*.bak
+*.tmp

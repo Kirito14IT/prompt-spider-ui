@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0a">
+  <title>Prompt Spider · 交互式提示词可视化</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="Prompt Spider 首页"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3v22M3 14h22M6 6l16 16M6 22L22 6M14 7l7 7-7 7-7-7Z"/><circle cx="14" cy="14" r="3"/></svg>PROMPT SPIDER <span>RECONSTRUCTION</span></a>
+    <div class="top-actions"><span class="local"><i></i> LOCAL DEMO</span><button id="aboutBtn" class="quiet">项目说明</button><a href="https://github.com/morluto/rea" target="_blank" rel="noreferrer" title="相关工具：REA">REA ↗</a></div>
+  </header>
+  <main class="workspace">
+    <section class="viewer" aria-label="可视化画布">
+      <div class="view-heading"><span><i class="pink-dot"></i> EVERY WORD, ONE FORK</span><div><button id="fitBtn" class="quiet" aria-pressed="false">放大画布</button><button id="fullscreenBtn" class="quiet" title="沉浸模式（F）">全屏</button></div></div>
+      <div id="stageHost" class="stage-host"><canvas id="scene" width="1080" height="1350" tabindex="0" aria-label="Prompt Spider 动画：逐词扫描、蛛网分流、置信度和覆盖率。点击词条可查看详情。"></canvas></div>
+      <div class="transport">
+        <div class="transport-top"><div class="playback"><button id="playBtn" class="primary" aria-label="暂停">暂停</button><button id="restartBtn" title="重新播放（R）">重播</button><span id="timeText" class="time">00.00 / 20.92</span></div><div class="playback"><label for="speed">速度</label><select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select><label class="check"><input id="loop" type="checkbox" checked>循环</label></div></div>
+        <input id="timeline" class="timeline" aria-label="播放进度" type="range" min="0" max="20.921" step="0.01" value="0">
+        <div class="transport-bottom"><span>SPACE 暂停 <b>·</b> R 重播 <b>·</b> F 全屏 <b>·</b> 点击词条查看分流</span><span id="frameStatus" aria-live="off">参考演示</span></div>
+      </div>
+    </section>
+    <button id="inspectorToggle" class="drawer-toggle" type="button" aria-label="展开控制栏" aria-expanded="false" aria-controls="inspector" title="展开控制栏"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 5-5 5 5 5"/></svg><span>控制</span></button>
+    <div id="inspectorBackdrop" class="drawer-backdrop" aria-hidden="true" hidden></div>
+    <aside id="inspector" class="inspector" aria-label="控制与词条详情" aria-hidden="true" inert>
+      <div class="drawer-heading"><span>控制与详情</span><button id="inspectorClose" class="quiet" type="button" aria-label="收起控制栏" title="收起控制栏"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5"/></svg></button></div>
+      <div class="panel-intro"><span class="eyebrow">FROM PIXELS TO INTERACTION</span><h1>让提示词<br>结成一张网。</h1><p>原生 Canvas 2D 交互演示：逐词扫描、蛛网分流与实时统计。</p></div>
+      <section class="control-section"><div class="section-title">运行方式 <span>01</span></div><div class="segmented"><button id="referenceMode" class="active" aria-pressed="true">参考演示</button><button id="customMode" aria-pressed="false">自己的提示词</button></div><p id="modeDescription" class="muted">固定提示词与轨迹展示逐词分流；分数为演示值，未连接模型。</p><div id="promptEditor" hidden><label for="promptInput">输入提示词</label><textarea id="promptInput" spellcheck="false" rows="7" maxlength="12000"></textarea><div class="editor-actions"><span id="wordCount">0 words</span><button id="runBtn" class="primary">扫描提示词</button></div><p class="muted">本地规则生成示意分数；模型与人工分支只进入待处理队列。</p></div></section>
+      <section class="control-section"><div class="section-title">分流阈值 <span>02</span></div><div class="threshold-value"><code>p ≥ <output id="thresholdValue">0.95</output></code><span>交给 code</span></div><input id="threshold" aria-label="代码分流阈值" type="range" min="0.5" max="0.99" step="0.01" value="0.95"><p class="muted">低于阈值交给模型；涉及批准的词优先交给你。拖动阈值会切换为本地规则演示。</p></section>
+      <section class="control-section"><div class="section-title">查看分支 <span>03</span></div><div class="filters" aria-label="分支筛选"><button data-route="all" class="active">全部</button><button data-route="code"><i class="code-dot"></i>code</button><button data-route="model"><i class="model-dot"></i>model</button><button data-route="you"><i class="you-dot"></i>you</button></div><div id="selection" class="selection"><span class="muted">点击画布中的词条或决策流</span><strong>每个词，都是一次分叉。</strong><span class="muted">查看问题、分数，以及它被送往哪里。</span></div></section>
+      <button id="exportBtn" class="export">导出本次分流 JSON <span>↓</span></button>
+      <div class="footnote"><i></i>纯本地运行，无 API 调用。<br>画面复刻 ≠ 原始源码或真实模型推理。</div>
+    </aside>
+  </main>
+  <dialog id="aboutDialog"><div class="dialog-heading"><h2>关于 Prompt Spider UI</h2><button id="closeAbout" aria-label="关闭说明">关闭</button></div><p>使用原生 Canvas 2D 实现逐词扫描、蛛网分流与动态统计。项目根据画面参考重新实现视觉和交互，不声称恢复了原作者源码；运行无需视频文件。</p><p>参考演示包含 175 次分流：137 code、27 model、11 you。轨迹与统计依据画面测量；逐词对应、分数与中间运动采用确定性重建，并非原始运行日志。示例提示词中的数字属于文案，不代表运行统计。</p><p>自定义模式使用可检查的本地规则，分数仅作演示。分流不会执行代码、调用模型、发送消息或批准操作。“sonnet 5.5”等模型名称仅为视觉标签。REA 外链用于介绍相关调查工具。</p><p class="muted">快捷键：空格播放/暂停，R 重播，F 沉浸模式，Esc 退出；左右方向键前后跳转。</p></dialog>
+  <div id="toast" role="status"></div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
