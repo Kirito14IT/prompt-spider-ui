@@ -1,6 +1,6 @@
 <p align="center"><img src="docs/brand/logo.svg" width="560" alt="Prompt Spider UI"></p>
 
-# Prompt Spider UI
+# Prompt Spider UI~
 
 <p align="center">
   <a href="README.md"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-f34a87?style=flat-square" alt="简体中文"></a>
