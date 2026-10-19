@@ -29,7 +29,7 @@ cd prompt-spider-ui
 npm start
 ```
 
-Open **http://127.0.0.1:4317** in your browser once the terminal prints the local address. Press `Ctrl+C` to stop the server. On Windows, you can also double-click `启动.cmd`.
+Open **http://127.0.0.1:4317** in your browser once the terminal prints the local address. Press `Ctrl+C` to stop the server. On Windows, you can also double-click `start.cmd`.
 
 The ordinary UI has no third-party runtime dependencies, so you can skip `npm install`. MCP integration requires the separate subpackage installation below. Use a recent version of Chrome, Edge, or Firefox. The layout also adapts to phone screens. By default, the server listens only on `127.0.0.1`.
 
@@ -218,7 +218,7 @@ prompt-spider-ui/
 ├── exports/                # Explicit project / session exports (gitignored)
 ├── tests/*.test.mjs        # Tests using the built-in Node.js runner
 ├── server.mjs             # Local Node.js static server
-├── 启动.cmd               # Windows launcher
+├── start.cmd               # Windows launcher
 ├── README.md              # Chinese documentation (default)
 ├── README.en.md           # English documentation
 ├── package.json

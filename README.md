@@ -30,7 +30,7 @@ npm start
 ```
 
 浏览器打开 http://127.0.0.1:4317
-终端出现本地地址后即可访问，按 `Ctrl+C` 停止服务。Windows 用户也可以双击 `启动.cmd`。
+终端出现本地地址后即可访问，按 `Ctrl+C` 停止服务。Windows 用户也可以双击 `start.cmd`。
 
 普通 UI 没有第三方运行依赖，跳过 `npm install` 即可。MCP 接入需要单独安装子包依赖，见下文。推荐使用较新的 Chrome、Edge 或 Firefox；手机尺寸也有适配。服务默认只监听本机 `127.0.0.1`。
 
@@ -191,7 +191,7 @@ prompt-spider-ui/
 ├── exports/                # 主动导出的项目 / 会话（已忽略）
 ├── tests/*.test.mjs        # Node.js 内置测试
 ├── server.mjs              # Node.js 本地静态服务
-├── 启动.cmd                # Windows 启动入口
+├── start.cmd                # Windows 启动入口
 ├── README.md               # 默认中文文档
 ├── README.en.md            # 英文文档
 ├── package.json
