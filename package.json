@@ -1,6 +1,6 @@
 {
   "name": "prompt-spider-ui",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Canvas 2D Agent visualization with optional local MCP, live events, replay, themes, layouts, and project export.",
   "license": "MIT",
   "repository": {
@@ -12,7 +12,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test tests/body-motion.test.mjs tests/model.test.mjs tests/motion.test.mjs tests/probes.test.mjs tests/session.test.mjs tests/hub.test.mjs tests/live-ui.test.mjs",
+    "test": "node --test tests/body-motion.test.mjs tests/model.test.mjs tests/motion.test.mjs tests/probes.test.mjs tests/session.test.mjs tests/hub.test.mjs tests/live-ui.test.mjs tests/orbit.test.mjs",
     "test:mcp": "npm --prefix mcp test"
   },
   "engines": { "node": ">=20" }

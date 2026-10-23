@@ -5,7 +5,7 @@
 <p align="center">
   <a href="README.md"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-f34a87?style=flat-square" alt="简体中文"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/Language-English-3b82f6?style=flat-square" alt="English"></a>
-  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.1.0-8b5cf6?style=flat-square" alt="Version 1.1.0"></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.2.0-8b5cf6?style=flat-square" alt="Version 1.2.0"></a>
   <a href="#快速开始"><img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=flat-square&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js 20+"></a>
   <a href="app/main.js"><img src="https://img.shields.io/badge/JavaScript-ES_modules-f7df1e?style=flat-square&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ES modules"></a>
   <a href="app/renderer.js"><img src="https://img.shields.io/badge/Canvas-2D-06b6d4?style=flat-square" alt="Canvas 2D"></a>
@@ -33,6 +33,18 @@ npm start
 终端出现本地地址后即可访问，按 `Ctrl+C` 停止服务。Windows 用户也可以双击 `start.cmd`。
 
 普通 UI 没有第三方运行依赖，跳过 `npm install` 即可。MCP 接入需要单独安装子包依赖，见下文。推荐使用较新的 Chrome、Edge 或 Firefox；手机尺寸也有适配。服务默认只监听本机 `127.0.0.1`。
+
+## 1.2 新增：探索网络
+
+- **星轨网络**：点击画布上方的「星轨网络」，在三个分支轨道中查看节点。横向拖动或使用旋转滑块；暂停和时间轴仍控制动画，系统减少动态效果时停止自动旋转。
+- **词条搜索**：搜索当前时间点已出现的词条或事件，点结果打开详情；星轨视图会淡化非匹配节点。Agent 模式搜索当前页（最多 32 个事件）。
+- **PNG 快照**：直接保存当前画布像素尺寸的图片，不含控制栏和浏览器边框。
+
+没有新增运行依赖，普通演示、Agent 会话、JSON 回放及独立导出项目均可使用。经典蛛网仍为默认视图；星轨仅按分支排列节点，距离不代表语义相似度或因果关系。
+
+![星轨网络预览](docs/orbit-preview.png)
+
+详见[更新记录](CHANGELOG.md)与[视觉参考](docs/visual-references.md)。
 
 ## 可以怎么玩
 

@@ -1,3 +1,4 @@
+import { drawOrbit } from './orbit.js';
 import { LIVE_LAYOUTS, eventPlacement, hitEvent, routeTarget, livePose, alpha } from './live-layout.js';
 import { legPose, heartbeatAt } from './spider.js';
 import { probePose } from './probes.js';
@@ -36,8 +37,11 @@ export class LiveRenderer {
     const scene=layout.scene;this.panel(scene,config.unit==='word'?'PROMPT / TOKEN STREAM':'AGENT / TASK STREAM',theme,`PAGE ${page+1} · ${view.totalEvents} EVENTS`);
     c.save();c.beginPath();c.rect(scene.x+1,scene.y+31,scene.w-2,scene.h-32);c.clip();
     this.regions=eventPlacement(layout,view.events).filter(x=>routeFilter==='all'||x.event.route===routeFilter);
-    this.web(view,time,reducedMotion,selectedId);
-    for(const region of this.regions){
+    if (this.networkView === 'orbit') {
+      const nodes=drawOrbit(c,view.events,{x:scene.x+1,y:scene.y+31,w:scene.w-2,h:scene.h-32},{time,angle:this.orbitAngle || 0,reducedMotion,filter:routeFilter,query:this.searchQuery,selected:selectedId,theme,colors:Object.fromEntries(ROUTES.map(r=>[r,config.routes[r].color]))});
+      this.regions=nodes.reverse().map(n=>({event:n.event,x:n.x-12,y:n.y,w:24,h:24}));
+    } else this.web(view,time,reducedMotion,selectedId);
+    for(const region of this.networkView === 'orbit' ? [] : this.regions){
       const {event,x,y,w,h}=region,color=config.routes[event.route].color,selected=event.id===selectedId;
       if(selected||event.status==='running'){c.fillStyle=alpha(selected?theme.accent:color,.13);c.fillRect(x-6,y-h/2,w+8,h);}
       this.text(String(event.order??region.index+1).padStart(3,'0'),x,y+4,theme.muted,9);

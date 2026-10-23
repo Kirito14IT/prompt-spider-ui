@@ -1,3 +1,4 @@
+import { mountExplorer } from './explorer.js';
 import { LiveRenderer } from './live-renderer.js';
 import { SessionProjection, validateRecord } from '/lib/replay.js';
 import { SessionStore } from '/lib/session-store.js';
@@ -103,7 +104,9 @@ export async function startLive(project={}) {
     if(!projection||!meta)return;const at=cursor(),filter=meta.playback.routeFilter||'all';let page=meta.playback.page||0;
     let view=projection.view(at,{offset:page*PAGE_SIZE,limit:PAGE_SIZE});const maxPage=Math.max(0,Math.ceil(view.totalEvents/PAGE_SIZE)-1);if(page>maxPage){page=maxPage;view=projection.view(at,{offset:page*PAGE_SIZE,limit:PAGE_SIZE});}visiblePage=page;lastView=view;syncConfig(view.config);
     if(view.config.unit==='word'){if(wordConfig!==view.config){wordConfig=view.config;wordTokens=tokenizePrompt(view.config.prompt).tokens;}view={...view,events:view.events.map(event=>({...event,displayLabel:wordTokens[event.tokenIndex]?.word??event.label}))};}
+    lastView=view;
     renderer.render(view,{time:at,reducedMotion,selectedId,page,routeFilter:filter,connection});
+    updateExplorer();
     const now=performance.now();if(!force&&now-lastUi<100)return;lastUi=now;
     const liveSource=meta.status==='live'&&meta.source!=='replay'&&!closed,maximum=liveSource?meta.elapsed+(now-anchor)/1000:meta.duration;
     $('#timeline').max=String(Math.max(.01,maximum));$('#timeline').value=String(at);$('#timeText').textContent=`${at.toFixed(2)} / ${maximum.toFixed(2)}`;
@@ -134,6 +137,7 @@ export async function startLive(project={}) {
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('#aboutDialog').open){if(document.body.classList.contains('immersive'))immersive();else drawer(false);return;}if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)||$('#aboutDialog').open||!meta)return;if(event.code==='Space'){event.preventDefault();control({action:meta.playback.mode==='paused'?'play':'pause'});}else if(event.key.toLowerCase()==='r')control({action:'restart'});else if(event.key.toLowerCase()==='f')immersive();else if(event.key==='ArrowRight')control({action:'seek',position:cursor()+.5});else if(event.key==='ArrowLeft')control({action:'seek',position:Math.max(0,cursor()-.5)});});
   window.addEventListener('resize',()=>render(true));window.addEventListener('beforeunload',()=>streamAbort?.abort());
   window.spiderLive={getState:()=>lastView,getMeta:()=>meta,renderer,control,loadReplay:localReplay,selectEvent,render:()=>render(true)};
+  const updateExplorer=mountExplorer({renderer,refresh:()=>render(true),getEvents:()=>lastView?.events.filter(e=>!meta.playback.routeFilter||meta.playback.routeFilter==='all'||e.route===meta.playback.routeFilter)||[],select:selectEvent,toast});
   drawer(false,{focus:false});
   try{
     if(remote){if(!token)throw Error('预览令牌缺失。请使用 Agent 返回的完整预览地址。');receiveSnapshot(await api(''));connect();}

@@ -1,3 +1,4 @@
+import { drawOrbit } from './orbit.js';
 import { referencePose, arcX, flightGeometry } from './motion.js';
 import { drawSpider } from './spider.js';
 import { drawProbes } from './probes.js';
@@ -159,9 +160,12 @@ export class Renderer {
       y: placement ? baseline + (placement.row - scroll) * 19.1 : 230,
     });
     this.drawHeader(state, decisions, counts);
-    this.drawWeb(state, layout, byToken, scroll, tokenPoint);
+    if (this.networkView === 'orbit') {
+      const nodes = drawOrbit(c, decisions, {x:360,y:85,w:525,h:750}, {time:state.elapsed,angle:this.orbitAngle || 0,reducedMotion:state.reducedMotion,filter:state.routeFilter,query:this.searchQuery,selected:state.selectedIndex,theme:{background:PALETTE.background,text:PALETTE.white,muted:'#9998a0'},colors:PALETTE});
+      this.regions.push(...nodes.map(n=>({x:n.x-10,y:n.y-10,w:20,h:20,index:n.event.index})));
+    } else this.drawWeb(state, layout, byToken, scroll, tokenPoint);
     this.drawEditor(state, layout, byToken, scroll);
-    this.drawFlights(state, layout, tokenPoint);
+    if (this.networkView !== 'orbit') this.drawFlights(state, layout, tokenPoint);
     this.drawRouteCards(state, counts, latest);
     this.drawRoutingParticles(state);
     this.drawSpider(state, pose, latest, layout, tokenPoint);

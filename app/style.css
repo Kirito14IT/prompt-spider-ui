@@ -45,3 +45,19 @@ body.immersive .drawer-toggle,body.immersive .drawer-backdrop{display:none}
 #liveError{max-width:500px;border:1px solid var(--pink);padding:24px;line-height:2;color:var(--text)}
 .live-session #scene:has(+ #liveError){display:none}
 @media(max-width:720px){.live-session .transport-top{gap:14px;flex-wrap:wrap}.live-session .playback{flex-wrap:wrap}.live-session .stage-host #scene{width:100%;height:auto;max-height:none}.live-session .transport-bottom>span:first-child{max-width:55%}.live-session .panel-intro h1{font-size:24px}}
+
+/* Network exploration stays next to the canvas; the original drawer stays intact. */
+.explorer{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:0 0 12px;font-size:11px;max-width:1700px;margin:auto}
+.explorer button{min-height:36px;padding:8px 12px;white-space:nowrap}
+.explorer-views{display:flex;gap:2px}
+.explorer-views button[aria-pressed=true]{color:var(--pink);border-color:var(--pink);background:#21131b}
+.explorer-search{margin-left:auto;max-width:270px;flex:1;min-width:145px}
+.explorer-search input{width:100%;min-height:36px;background:var(--panel);color:var(--text);border:1px solid var(--border);padding:8px 12px;font:inherit}
+.explorer-search input::placeholder{color:#a5a3ab}
+.explorer button:focus-visible,.explorer input:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.node-results{display:flex;flex-wrap:wrap;gap:7px;width:100%;padding:12px 0;border-top:1px solid var(--border)}
+.node-results[hidden]{display:none}.node-results>span{width:100%;color:var(--muted)}
+.node-results button{max-width:100%;overflow:hidden;text-overflow:ellipsis;text-align:left}
+body.immersive .explorer{display:none}
+@media(max-width:720px){.explorer{gap:7px}.explorer button{padding:8px}.explorer-search{order:3;flex-basis:100%;max-width:none}.explorer #snapshotBtn{margin-left:auto}}
+.orbit-rotation{display:flex;gap:8px;align-items:center;color:var(--muted)}.orbit-rotation[hidden]{display:none}.orbit-rotation input{width:80px;accent-color:var(--pink)}

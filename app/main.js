@@ -1,3 +1,4 @@
+import { mountExplorer } from './explorer.js';
 import { Renderer } from './renderer.js';
 import { referenceRun, customRun, stateAt } from './model.js';
 
@@ -54,6 +55,7 @@ function updateSelection() {
 }
 function render() {
   const state = getState(); renderer.render(state);
+  if (typeof updateExplorer === 'function') updateExplorer();
   $('#timeline').value = String(elapsed);
   $('#timeText').textContent = `${elapsed.toFixed(2).padStart(5, '0')} / ${run.duration.toFixed(2)}`;
   $('#playBtn').textContent = playing ? '暂停' : '播放';
@@ -148,6 +150,7 @@ document.addEventListener('keydown', event => {
 window.addEventListener('resize', render);
 // Deterministic time control for inspection, screenshots and optional offline capture.
 window.spider = { getState, seek, pause: () => { playing = false; render(); }, play: () => { playing = true; }, selectWord, setMode, loadPrompt: text => { $('#promptInput').value = text; setMode('custom'); }, renderer };
+const updateExplorer = mountExplorer({renderer, refresh:render, getEvents:()=>getState().decisions.filter(e=>routeFilter==='all'||e.route===routeFilter), select:selectWord, toast});
 $('#wordCount').textContent = `${run.tokens.length} groups`;
 syncDrawerVisibility();
 updateSelection(); render(); requestAnimationFrame(tick);

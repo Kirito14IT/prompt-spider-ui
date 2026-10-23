@@ -5,7 +5,7 @@
 <p align="center">
   <a href="README.md"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-f34a87?style=flat-square" alt="简体中文"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/Language-English-3b82f6?style=flat-square" alt="English"></a>
-  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.1.0-8b5cf6?style=flat-square" alt="Version 1.1.0"></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.2.0-8b5cf6?style=flat-square" alt="Version 1.2.0"></a>
   <a href="#quick-start"><img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=flat-square&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js 20+"></a>
   <a href="app/main.js"><img src="https://img.shields.io/badge/JavaScript-ES_modules-f7df1e?style=flat-square&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ES modules"></a>
   <a href="app/renderer.js"><img src="https://img.shields.io/badge/Canvas-2D-06b6d4?style=flat-square" alt="Canvas 2D"></a>
@@ -32,6 +32,18 @@ npm start
 Open **http://127.0.0.1:4317** in your browser once the terminal prints the local address. Press `Ctrl+C` to stop the server. On Windows, you can also double-click `start.cmd`.
 
 The ordinary UI has no third-party runtime dependencies, so you can skip `npm install`. MCP integration requires the separate subpackage installation below. Use a recent version of Chrome, Edge, or Firefox. The layout also adapts to phone screens. By default, the server listens only on `127.0.0.1`.
+
+## New in 1.2: explore the network
+
+- **Orbital view:** switch from the classic web to three orbital node bands. Drag horizontally or use the rotation slider; pause/seek still controls animation. Reduced-motion settings stop automatic rotation.
+- **Search:** find words or events already visible at the current time. Live sessions search the current page (up to 32 events). Results open the existing inspector; the orbital view dims non-matching nodes.
+- **PNG snapshot:** save the current canvas at its rendered pixel resolution, without controls or browser chrome.
+
+No new runtime dependencies. Works in the ordinary demo, Agent sessions, local replays and exported projects. The classic view remains the default. Orbital positions are a visual grouping by route, not semantic similarity or causal relationships.
+
+![Orbital network preview](docs/orbit-preview.png)
+
+See [changelog](CHANGELOG.md) and [visual references](docs/visual-references.md).
 
 ## Explore the demo
 
