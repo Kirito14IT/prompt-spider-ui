@@ -1,5 +1,10 @@
 # Changelog
 
+## Documentation — 2026-10-29
+
+- Added an independent, full-run orbital-network GIF to both READMEs, captured from the actual canvas renderer with word grabbing, node rotation and changing counters.
+- Kept the logo animation and classic-web preview, with the previous orbital PNG available as the reduced-motion source.
+
 ## 1.2.3 — 2026-10-29
 
 - Enlarged the horizontal logo spider to roughly three quarters of the frame height and centered its left/right patrol.

@@ -42,7 +42,7 @@ npm start
 
 没有新增运行依赖，普通演示、Agent 会话、JSON 回放及独立导出项目均可使用。经典蛛网仍为默认视图；星轨仅按分支排列节点，距离不代表语义相似度或因果关系。
 
-![星轨网络预览](docs/orbit-preview.png)
+<p align="center"><picture><source media="(prefers-reduced-motion: reduce)" srcset="docs/orbit-preview.png"><img src="docs/orbit-preview.gif" width="540" alt="星轨网络动画：机械蜘蛛抓词、节点旋转与动态统计"></picture></p>
 
 详见[更新记录](CHANGELOG.md)与[视觉参考](docs/visual-references.md)。
 

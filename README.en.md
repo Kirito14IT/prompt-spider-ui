@@ -41,7 +41,7 @@ The ordinary UI has no third-party runtime dependencies, so you can skip `npm in
 
 No new runtime dependencies. Works in the ordinary demo, Agent sessions, local replays and exported projects. The classic view remains the default. Orbital positions are a visual grouping by route, not semantic similarity or causal relationships.
 
-![Orbital network preview](docs/orbit-preview.png)
+<p align="center"><picture><source media="(prefers-reduced-motion: reduce)" srcset="docs/orbit-preview.png"><img src="docs/orbit-preview.gif" width="540" alt="Orbital network animation: mechanical word grabbing, rotating nodes, and changing statistics"></picture></p>
 
 See [changelog](CHANGELOG.md) and [visual references](docs/visual-references.md).
 
