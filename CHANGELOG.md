@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.2 — 2026-10-29
+
+- Replaced the horizontal logo patrol with one spider walking across the wordmark and back, with visible alternating steps and in-place turns.
+- Re-rendered the README GIF as a seamless twelve-second loop; kept the wordmark stationary and the navigation icon unchanged.
+
 ## 1.2.1 — 2026-10-29
 
 - Animated the existing mechanical spider logo with a six-second directional patrol, staggered legs, orbital nodes and a double heartbeat.

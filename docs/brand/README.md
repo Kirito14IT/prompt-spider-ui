@@ -6,8 +6,8 @@ The symbol combines eight mint mechanical legs with a pink code-bracket core. It
 
 | 文件 / File | 规格与用途 / Specification and use |
 | --- | --- |
-| `logo-animated.svg` | 720 × 160，6 秒闭合循环 / six-second animated wordmark |
-| `logo-animated.gif` | 720 × 160，96 帧，约 423 KiB；README 循环动画 / looping README animation |
+| `logo-animated.svg` | 720 × 160，12 秒字标往返爬行 / twelve-second wordmark walk |
+| `logo-animated.gif` | 720 × 160，240 帧，约 476 KiB；README 循环动画 / looping README animation |
 | `../../app/brand-mark.svg` | 160 × 160，网页动态标志 / animated web symbol |
 | `logo.svg` | 720 × 160 viewBox，深色横版 / dark wordmark |
 | `logo-light.svg` | 720 × 160 viewBox，浅色横版 / light wordmark |
@@ -34,9 +34,9 @@ Brand assets use the project's [MIT License](../../LICENSE). Retain the license 
 
 ## 动画使用 / Motion
 
-新版保留原字标路径和八腿蜘蛛轮廓，蜘蛛按上、右、下、左方向探身，配合错峰摆腿、双拍心跳和轨道节点。主循环为 6 秒；字标不动。导航栏的暂停按钮支持点击、空格和回车，独立于画布播放。网页在标志离屏、页面隐藏或系统开启减少动态效果时停止动画；资产加载失败时保留静态图标。
+横版 logo 中只有一只蜘蛛，沿 PROMPT SPIDER UI 字标上缘从左爬到右，再从右爬到左；两端原地转身，12 秒无缝循环。八腿以 0.6 秒周期交错迈步，粉色核心保持双拍心跳，文字保持稳定。网页导航的小图标继续使用 6 秒方向巡游；暂停按钮支持点击、空格和回车，独立于画布播放。网页在标志离屏、页面隐藏或系统开启减少动态效果时停止动画；资产加载失败时保留静态图标。
 
-The six-second patrol combines directional motion, staggered legs, a double heartbeat and orbiting nodes. Lettering remains stationary. The navigation pause button works independently from scene playback. The web mark pauses offscreen, on hidden pages, and under reduced motion, with a static icon fallback if loading fails.
+One spider walks back and forth over the PROMPT SPIDER UI lettering in a seamless twelve-second loop, turning in place at both ends. Its legs alternate every 0.6 seconds and the pink core keeps its double heartbeat. Lettering stays stationary. The small navigation icon retains its six-second patrol and independent pause control. The web mark pauses offscreen, on hidden pages, and under reduced motion, with a static icon fallback if loading fails.
 
 README 使用 GIF 保证常见图片环境中的循环显示；picture 为减少动态效果提供原静态 SVG。原始 logo.svg、logo-light.svg、PNG 和 favicon 保持可用。动态 SVG 无脚本或外部依赖；GIF 从同一 SVG 的确定时间点采帧生成。
 
