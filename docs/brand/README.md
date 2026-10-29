@@ -6,6 +6,9 @@ The symbol combines eight mint mechanical legs with a pink code-bracket core. It
 
 | 文件 / File | 规格与用途 / Specification and use |
 | --- | --- |
+| `logo-animated.svg` | 720 × 160，6 秒闭合循环 / six-second animated wordmark |
+| `logo-animated.gif` | 720 × 160，96 帧，约 423 KiB；README 循环动画 / looping README animation |
+| `../../app/brand-mark.svg` | 160 × 160，网页动态标志 / animated web symbol |
 | `logo.svg` | 720 × 160 viewBox，深色横版 / dark wordmark |
 | `logo-light.svg` | 720 × 160 viewBox，浅色横版 / light wordmark |
 | `icon.svg` | 128 × 128 viewBox，透明底 / transparent symbol |
@@ -28,3 +31,13 @@ Design process: a concept was generated with the built-in imagegen tool, then re
 品牌资产采用项目的 [MIT License](../../LICENSE)。复用和修改时保留许可证声明。
 
 Brand assets use the project's [MIT License](../../LICENSE). Retain the license notice when reusing or modifying them.
+
+## 动画使用 / Motion
+
+新版保留原字标路径和八腿蜘蛛轮廓，蜘蛛按上、右、下、左方向探身，配合错峰摆腿、双拍心跳和轨道节点。主循环为 6 秒；字标不动。导航栏的暂停按钮支持点击、空格和回车，独立于画布播放。网页在标志离屏、页面隐藏或系统开启减少动态效果时停止动画；资产加载失败时保留静态图标。
+
+The six-second patrol combines directional motion, staggered legs, a double heartbeat and orbiting nodes. Lettering remains stationary. The navigation pause button works independently from scene playback. The web mark pauses offscreen, on hidden pages, and under reduced motion, with a static icon fallback if loading fails.
+
+README 使用 GIF 保证常见图片环境中的循环显示；picture 为减少动态效果提供原静态 SVG。原始 logo.svg、logo-light.svg、PNG 和 favicon 保持可用。动态 SVG 无脚本或外部依赖；GIF 从同一 SVG 的确定时间点采帧生成。
+
+The README GIF is rendered from the same animated SVG; its picture element selects the static SVG for reduced motion where media sources are supported. Existing static assets remain available. Animation adds no runtime dependency.

@@ -1,11 +1,11 @@
-<p align="center"><img src="docs/brand/logo.svg" width="560" alt="Prompt Spider UI"></p>
+<p align="center"><picture><source media="(prefers-reduced-motion: reduce)" srcset="docs/brand/logo.svg"><img src="docs/brand/logo-animated.gif" width="560" alt="Prompt Spider UI"></picture></p>
 
 # Prompt Spider UI~
 
 <p align="center">
   <a href="README.md"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-f34a87?style=flat-square" alt="简体中文"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/Language-English-3b82f6?style=flat-square" alt="English"></a>
-  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.2.0-8b5cf6?style=flat-square" alt="Version 1.2.0"></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.2.1-8b5cf6?style=flat-square" alt="Version 1.2.1"></a>
   <a href="#quick-start"><img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=flat-square&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js 20+"></a>
   <a href="app/main.js"><img src="https://img.shields.io/badge/JavaScript-ES_modules-f7df1e?style=flat-square&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ES modules"></a>
   <a href="app/renderer.js"><img src="https://img.shields.io/badge/Canvas-2D-06b6d4?style=flat-square" alt="Canvas 2D"></a>

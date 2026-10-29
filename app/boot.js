@@ -1,3 +1,5 @@
+import { startBrandMotion } from './brand.js';
+void startBrandMotion();
 // The original measured demo remains its own unchanged entry point.
 let project={};
 let configError=null;
