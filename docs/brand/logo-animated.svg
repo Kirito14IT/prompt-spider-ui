@@ -1,22 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" class="ps-mark" viewBox="0 0 720 160" role="img" aria-labelledby="ps-logo-title ps-logo-desc">
   <title id="ps-logo-title">Prompt Spider UI</title>
-  <desc id="ps-logo-desc">One mechanical spider walks from left to right across the wordmark, turns around, and walks back in a seamless twelve-second loop.</desc>
+  <desc id="ps-logo-desc">One large mechanical spider patrols across the center of the wordmark, carrying its orbital particles and pulsing energy field through a seamless twelve-second loop.</desc>
   <style>
     .ps-motion{animation-timing-function:ease-in-out;animation-iteration-count:infinite}
-    .ps-travel{transform:translate(168px,52px);animation:ps-travel 12s linear infinite}
+    .ps-travel{transform:translate(230px,80px);animation:ps-travel 12s linear infinite}
     .ps-facing{transform:rotate(90deg);animation:ps-facing 12s ease-in-out infinite}
+    .ps-turn-fit{transform:scale(.98);animation:ps-turn-fit 12s linear infinite}
     .ps-bob{transform-origin:64px 64px;animation:ps-bob .6s ease-in-out infinite}
     .ps-leg{animation:ps-step .6s ease-in-out infinite}
     .ps-leg-right{animation-direction:reverse}
     .ps-core{transform-origin:64px 64px;animation:ps-heartbeat 1.5s ease-in-out infinite}
     .ps-aura{transform-origin:64px 64px;animation:ps-aura 1.5s ease-in-out infinite}
+    .ps-energy-orbit{transform-origin:0 0;animation:ps-energy-orbit 6s linear infinite}
+    .ps-energy-pulse{transform-origin:0 0;animation:ps-energy-pulse 1.5s ease-in-out infinite}
+    .ps-energy-particles{animation:ps-energy-particles 3s ease-in-out infinite}
     .ps-mark[data-motion="paused"] .ps-motion{animation-play-state:paused}
-    @keyframes ps-travel{0%,100%{transform:translate(168px,52px)}45%,50%{transform:translate(558px,52px)}95%{transform:translate(168px,52px)}}
+    @keyframes ps-travel{0%,100%{transform:translate(230px,80px)}45%,50%{transform:translate(490px,80px)}95%{transform:translate(230px,80px)}}
     @keyframes ps-facing{0%,45%{transform:rotate(90deg)}50%,95%{transform:rotate(270deg)}100%{transform:rotate(450deg)}}
+    @keyframes ps-turn-fit{0%,44%,51%,94%,100%{transform:scale(.98)}47.5%,97.5%{transform:scale(.84)}}
     @keyframes ps-step{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
     @keyframes ps-bob{0%,100%{transform:translate(0,0) rotate(-.7deg)}50%{transform:translate(0,-2px) rotate(.7deg)}}
     @keyframes ps-heartbeat{0%,48%,100%{transform:scale(1);fill:#f34a87}13%{transform:scale(1.13);fill:#ff87b4}26%{transform:scale(1.02);fill:#f34a87}35%{transform:scale(1.09);fill:#ff6da5}}
     @keyframes ps-aura{0%,48%,100%{transform:scale(.94);opacity:.18}13%{transform:scale(1.12);opacity:.48}35%{transform:scale(1.06);opacity:.36}}
+    @keyframes ps-energy-orbit{to{transform:rotate(360deg)}}
+    @keyframes ps-energy-pulse{0%,48%,100%{transform:scale(.94);opacity:.2}13%{transform:scale(1.025);opacity:.55}35%{transform:scale(.99);opacity:.38}}
+    @keyframes ps-energy-particles{0%,100%{transform:translate(0,0);opacity:.4}50%{transform:translate(0,-4px);opacity:.85}}
     @media(prefers-reduced-motion:reduce){.ps-mark .ps-motion{animation:none!important}.ps-mark .ps-aura{opacity:.18}}
   </style>
   <rect width="720" height="160" fill="#090a0a"/>
@@ -37,8 +45,15 @@
     <path transform="translate(114 0)" d="M0 0H6M3 0V10M0 10H6"/>
   </g>
   <g class="ps-motion ps-travel" fill="#f34a87">
+    <g class="ps-energy">
+      <circle cx="0" cy="0" r="66" fill="none" stroke="#44d79c" stroke-width=".8" stroke-dasharray="2 9" opacity=".32"/>
+      <path d="M-64-10A65 65 0 0 1-12-64M12 64A65 65 0 0 0 64 10" fill="none" stroke="#44d79c" stroke-width=".9" opacity=".4"/>
+      <circle class="ps-motion ps-energy-pulse" cx="0" cy="0" r="58" fill="none" stroke="#f34a87" stroke-width="1.1" opacity=".2"/>
+      <g class="ps-motion ps-energy-orbit"><circle cx="0" cy="-66" r="2.7" fill="#44d79c"/><circle cx="0" cy="66" r="2.2" fill="#f34a87"/><circle cx="0" cy="-66" r=".8" fill="#d3ffec"/></g>
+      <g class="ps-motion ps-energy-particles"><rect x="-61" y="-40" width="3" height="3" fill="#44d79c"/><rect x="59" y="37" width="3" height="3" fill="#f34a87"/><circle cx="46" cy="-49" r="1.4" fill="#44d79c"/><circle cx="-46" cy="53" r="1.2" fill="#f34a87"/></g>
+    </g>
     <g class="ps-motion ps-facing">
-      <g transform="scale(.52)">
+      <g class="ps-motion ps-turn-fit">
         <g transform="translate(-64 -64)">
           <g class="ps-motion ps-bob">
       <path d="M57 36V31L61 28M71 36V31L67 28" fill="none" stroke="#44d79c" stroke-width="2"/><circle cx="57" cy="34" r="2" fill="#eafff5"/><circle cx="71" cy="34" r="2" fill="#eafff5"/>

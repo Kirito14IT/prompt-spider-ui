@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.3 — 2026-10-29
+
+- Enlarged the horizontal logo spider to roughly three quarters of the frame height and centered its left/right patrol.
+- Restored orbital lights, floating particles and the heartbeat aura as a field attached to the moving spider.
+
 ## 1.2.2 — 2026-10-29
 
 - Replaced the horizontal logo patrol with one spider walking across the wordmark and back, with visible alternating steps and in-place turns.

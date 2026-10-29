@@ -1,6 +1,6 @@
 {
   "name": "prompt-spider-ui",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Canvas 2D Agent visualization with optional local MCP, live events, replay, themes, layouts, and project export.",
   "license": "MIT",
   "repository": {
