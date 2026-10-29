@@ -11,6 +11,8 @@
   <a href="app/renderer.js"><img src="https://img.shields.io/badge/Canvas-2D-06b6d4?style=flat-square" alt="Canvas 2D"></a>
   <a href="#connect-your-agent-with-mcp"><img src="https://img.shields.io/badge/MCP-local_stdio-42d6a4?style=flat-square" alt="MCP local stdio"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-f0ca57?style=flat-square" alt="License MIT"></a>
+  <br>
+  <a href="https://github.com/Kirito14IT/prompt-spider-ui/stargazers"><img src="https://img.shields.io/github/stars/Kirito14IT/prompt-spider-ui?style=social" alt="GitHub Stars"></a>
 </p>
 
 An animated prompt visualization built with **vanilla JavaScript and Canvas 2D**. A mechanical spider crawls over the text, reaches out to grab words, and sends them along curved paths into a web before routing them to three branches: `code`, `model`, and `you`.
