@@ -12,7 +12,7 @@
   <a href="#连接自己的-agentmcp"><img src="https://img.shields.io/badge/MCP-local_stdio-42d6a4?style=flat-square" alt="MCP local stdio"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-f0ca57?style=flat-square" alt="License MIT"></a>
   <br>
-  <a href="https://github.com/Kirito14IT/prompt-spider-ui/stargazers"><img src="https://img.shields.io/github/stars/Kirito14IT/prompt-spider-ui?style=social" alt="GitHub Stars"></a>
+  <a href="https://github.com/Kirito14IT/prompt-spider-ui/stargazers"><img src="https://img.shields.io/github/stars/Kirito14IT/prompt-spider-ui?style=social&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iIzlhNjcwMCIgZD0ibTEyIDIgMy4xIDYuMyA2LjkgMS01IDQuOSAxLjIgNi44LTYuMi0zLjItNi4yIDMuMkw3IDE0LjIgMiA5LjNsNi45LTF6Ii8%2BPC9zdmc%2B" alt="GitHub Stars"></a>
 </p>
 
 一个用 **原生 JavaScript + Canvas 2D** 实现的动态提示词可视化界面：机械蜘蛛沿文字游走、伸出触手抓取词语，词条沿弧线飞入蛛网，再分流到 `code`、`model` 和 `you` 三条分支。

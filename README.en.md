@@ -12,7 +12,7 @@
   <a href="#connect-your-agent-with-mcp"><img src="https://img.shields.io/badge/MCP-local_stdio-42d6a4?style=flat-square" alt="MCP local stdio"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-f0ca57?style=flat-square" alt="License MIT"></a>
   <br>
-  <a href="https://github.com/Kirito14IT/prompt-spider-ui/stargazers"><img src="https://img.shields.io/github/stars/Kirito14IT/prompt-spider-ui?style=social" alt="GitHub Stars"></a>
+  <a href="https://github.com/Kirito14IT/prompt-spider-ui/stargazers"><img src="https://img.shields.io/github/stars/Kirito14IT/prompt-spider-ui?style=social&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iIzlhNjcwMCIgZD0ibTEyIDIgMy4xIDYuMyA2LjkgMS01IDQuOSAxLjIgNi44LTYuMi0zLjItNi4yIDMuMkw3IDE0LjIgMiA5LjNsNi45LTF6Ii8%2BPC9zdmc%2B" alt="GitHub Stars"></a>
 </p>
 
 An animated prompt visualization built with **vanilla JavaScript and Canvas 2D**. A mechanical spider crawls over the text, reaches out to grab words, and sends them along curved paths into a web before routing them to three branches: `code`, `model`, and `you`.
