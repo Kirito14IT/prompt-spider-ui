@@ -3,10 +3,12 @@ import { Renderer } from './renderer.js';
 import { referenceRun, customRun, stateAt } from './model.js';
 
 const $ = selector => document.querySelector(selector);
+const INTERACTIVE_TARGETS = 'button, a, input, textarea, select, summary, [role="button"], [role="link"], [role="slider"], [role="textbox"], [role="combobox"]';
 const source = await fetch('/prompt.txt').then(response => { if (!response.ok) throw Error('Prompt source unavailable'); return response.text(); });
 let run = referenceRun(source), elapsed = 0, playing = !matchMedia('(prefers-reduced-motion: reduce)').matches;
 let speed = 1, threshold = 0.95, routeFilter = 'all', selectedIndex = null, lastFrame = null, toastTimer;
 let drawerOpen = false;
+let selectionSignature = null;
 const canvas = $('#scene'), reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const renderer = new Renderer(canvas, { onSelect: selectWord });
 $('#promptInput').value = source;
@@ -35,8 +37,11 @@ function setDrawerOpen(open, { focus = true } = {}) {
   syncDrawerVisibility();
   if (focus) (open ? $('#inspectorClose') : $('#inspectorToggle')).focus({ preventScroll: true });
 }
-function updateSelection() {
-  const d = getState().decisions.find(item => item.index === selectedIndex);
+function updateSelection(state = getState()) {
+  const d = state.decisions.find(item => item.index === selectedIndex);
+  const signature = JSON.stringify([selectedIndex, d?.word ?? run.tokens[selectedIndex]?.word, d?.question, d?.score, d?.route]);
+  if (signature === selectionSignature) return;
+  selectionSignature = signature;
   const el = $('#selection');
   el.replaceChildren();
   if (!d) {
@@ -55,6 +60,7 @@ function updateSelection() {
 }
 function render() {
   const state = getState(); renderer.render(state);
+  updateSelection(state);
   if (typeof updateExplorer === 'function') updateExplorer();
   $('#timeline').value = String(elapsed);
   $('#timeText').textContent = `${elapsed.toFixed(2).padStart(5, '0')} / ${run.duration.toFixed(2)}`;
@@ -140,7 +146,8 @@ document.addEventListener('keydown', event => {
     else if (drawerOpen) setDrawerOpen(false);
     return;
   }
-  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) || $('#aboutDialog').open) return;
+  const target = event.target, active = document.activeElement;
+  if (target?.closest?.(INTERACTIVE_TARGETS) || active?.closest?.(INTERACTIVE_TARGETS) || target?.isContentEditable || active?.isContentEditable || $('#aboutDialog').open) return;
   if (event.code === 'Space') { event.preventDefault(); togglePlayback(); }
   else if (event.key.toLowerCase() === 'r') restart();
   else if (event.key.toLowerCase() === 'f') immersive();

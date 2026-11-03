@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 — 2026-11-04
+
+- Added a deterministic 3D nebula view, route cores, depth-aware nodes and optional directional particles.
+- Added camera tilt, zoom/reset, canvas keyboard controls and node hover focus with live tooltips; extended orbital mode with zoom and energy flow.
+- Fixed Space stealing focused button activation, pointer ownership/release, stale selected-word details after scanning/looping and stale status/score tooltips.
+- Added a live Fork badge beside Star in both READMEs and an actual nebula preview with a static reduced-motion source.
+- Preserved classic default, dependency-free UI startup, current-page Agent rendering and standalone exports.
+
 ## Documentation — 2026-10-29
 
 - Added an independent, full-run orbital-network GIF to both READMEs, captured from the actual canvas renderer with word grabbing, node rotation and changing counters.

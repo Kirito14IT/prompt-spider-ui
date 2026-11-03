@@ -68,3 +68,17 @@ body.immersive .drawer-toggle,body.immersive .drawer-backdrop{display:none}
 body.immersive .explorer{display:none}
 @media(max-width:720px){.explorer{gap:7px}.explorer button{padding:8px}.explorer-search{order:3;flex-basis:100%;max-width:none}.explorer #snapshotBtn{margin-left:auto}}
 .orbit-rotation{display:flex;gap:8px;align-items:center;color:var(--muted)}.orbit-rotation[hidden]{display:none}.orbit-rotation input{width:80px;accent-color:var(--pink)}
+/* Network camera and focus controls share the existing terminal palette. */
+.network-tools{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;width:100%;padding:12px 0;border-top:1px solid var(--border)}
+.network-tools[hidden],.network-tools label[hidden]{display:none}
+.network-tools label{display:flex;align-items:center;gap:8px;color:var(--text);font-size:11px;white-space:nowrap}
+.network-tools input[type=range]{width:88px;margin:0;accent-color:var(--pink)}
+.network-tools output{min-width:42px;color:var(--pink);font-variant-numeric:tabular-nums}
+.network-tools input[type=checkbox]{margin:0;accent-color:var(--pink)}
+#networkHint{width:100%;font-size:11px;color:#a5a3ab;line-height:1.5}
+#stageHost{position:relative}
+.network-tooltip{position:absolute;z-index:5;max-width:min(270px,calc(100% - 12px));padding:10px 13px;background:#17181c;border:1px solid #66656e;color:#f1eff3;pointer-events:none;line-height:1.6;font-size:11px;box-shadow:0 6px 18px #0005;overflow-wrap:anywhere}
+.network-tooltip[hidden]{display:none}.network-tooltip strong,.network-tooltip span{display:block}.network-tooltip strong{font-size:13px;color:var(--pink)}.network-tooltip span{color:#c6c4cc}
+#scene[data-network-view=orbit],#scene[data-network-view=nebula]{touch-action:pan-y}
+@media(max-width:720px){.explorer-views{width:100%;justify-content:space-between}.explorer-views button{flex:1;min-height:40px}.network-tools{gap:14px}.network-tools input[type=range]{width:72px}.network-tools #resetCameraBtn{margin-left:auto}.explorer-search{order:0;flex-basis:calc(100% - 92px)}.explorer #snapshotBtn{margin-left:0}#networkHint{line-height:1.7}}
+.explorer{width:100%;max-width:1050px}.live-session .explorer{max-width:1700px}

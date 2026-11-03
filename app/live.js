@@ -6,6 +6,7 @@ import { ROUTES, tokenizePrompt } from '/lib/config.js';
 import { PAGE_SIZE, resolveCursor, parseSseFrames } from './live-layout.js';
 
 const $=selector=>document.querySelector(selector);
+const INTERACTIVE_TARGETS='button, a, input, textarea, select, summary, [role="button"], [role="link"], [role="slider"], [role="textbox"], [role="combobox"]';
 const STATUS={pending:'等待',running:'进行中',completed:'已完成',failed:'失败'};
 
 export async function startLive(project={}) {
@@ -134,7 +135,7 @@ export async function startLive(project={}) {
   $('#fitBtn').addEventListener('click',()=>{const zoom=document.body.classList.toggle('zoom');$('#fitBtn').textContent=zoom?'适应窗口':'放大画布';$('#fitBtn').setAttribute('aria-pressed',String(zoom));});$('#fullscreenBtn').addEventListener('click',immersive);
   $('#aboutBtn').addEventListener('click',()=>$('#aboutDialog').showModal());$('#closeAbout').addEventListener('click',()=>$('#aboutDialog').close());
   document.addEventListener('pointerdown',event=>{if(drawerOpen&&!document.body.classList.contains('immersive')&&!$('#inspector').contains(event.target)&&!$('#inspectorToggle').contains(event.target)&&event.target!==$('#inspectorBackdrop'))drawer(false,{focus:false});});
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('#aboutDialog').open){if(document.body.classList.contains('immersive'))immersive();else drawer(false);return;}if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)||$('#aboutDialog').open||!meta)return;if(event.code==='Space'){event.preventDefault();control({action:meta.playback.mode==='paused'?'play':'pause'});}else if(event.key.toLowerCase()==='r')control({action:'restart'});else if(event.key.toLowerCase()==='f')immersive();else if(event.key==='ArrowRight')control({action:'seek',position:cursor()+.5});else if(event.key==='ArrowLeft')control({action:'seek',position:Math.max(0,cursor()-.5)});});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('#aboutDialog').open){if(document.body.classList.contains('immersive'))immersive();else drawer(false);return;}const target=event.target,active=document.activeElement;if(target?.closest?.(INTERACTIVE_TARGETS)||active?.closest?.(INTERACTIVE_TARGETS)||target?.isContentEditable||active?.isContentEditable||$('#aboutDialog').open||!meta)return;if(event.code==='Space'){event.preventDefault();control({action:meta.playback.mode==='paused'?'play':'pause'});}else if(event.key.toLowerCase()==='r')control({action:'restart'});else if(event.key.toLowerCase()==='f')immersive();else if(event.key==='ArrowRight')control({action:'seek',position:cursor()+.5});else if(event.key==='ArrowLeft')control({action:'seek',position:Math.max(0,cursor()-.5)});});
   window.addEventListener('resize',()=>render(true));window.addEventListener('beforeunload',()=>streamAbort?.abort());
   window.spiderLive={getState:()=>lastView,getMeta:()=>meta,renderer,control,loadReplay:localReplay,selectEvent,render:()=>render(true)};
   const updateExplorer=mountExplorer({renderer,refresh:()=>render(true),getEvents:()=>lastView?.events.filter(e=>!meta.playback.routeFilter||meta.playback.routeFilter==='all'||e.route===meta.playback.routeFilter)||[],select:selectEvent,toast});

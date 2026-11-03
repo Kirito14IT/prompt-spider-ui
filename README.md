@@ -5,7 +5,7 @@
 <p align="center">
   <a href="README.md"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-f34a87?style=flat-square" alt="简体中文"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/Language-English-3b82f6?style=flat-square" alt="English"></a>
-  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.2.3-8b5cf6?style=flat-square" alt="Version 1.2.3"></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.3.0-8b5cf6?style=flat-square" alt="Version 1.3.0"></a>
   <a href="#快速开始"><img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=flat-square&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js 20+"></a>
   <a href="app/main.js"><img src="https://img.shields.io/badge/JavaScript-ES_modules-f7df1e?style=flat-square&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ES modules"></a>
   <a href="app/renderer.js"><img src="https://img.shields.io/badge/Canvas-2D-06b6d4?style=flat-square" alt="Canvas 2D"></a>
@@ -13,6 +13,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-f0ca57?style=flat-square" alt="License MIT"></a>
   <br>
   <a href="https://github.com/Kirito14IT/prompt-spider-ui/stargazers"><img src="https://img.shields.io/github/stars/Kirito14IT/prompt-spider-ui?style=social&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iIzlhNjcwMCIgZD0ibTEyIDIgMy4xIDYuMyA2LjkgMS01IDQuOSAxLjIgNi44LTYuMi0zLjItNi4yIDMuMkw3IDE0LjIgMiA5LjNsNi45LTF6Ii8%2BPC9zdmc%2B" alt="GitHub Stars"></a>
+  <a href="https://github.com/Kirito14IT/prompt-spider-ui/forks"><img src="https://img.shields.io/github/forks/Kirito14IT/prompt-spider-ui?style=social&amp;label=Forks&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNTc2MDZhIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI%2BPHBhdGggZD0iTTcgNnYxMk0xNyA2djNhNiA2IDAgMCAxLTYgNkg3Ii8%2BPGNpcmNsZSBjeD0iNyIgY3k9IjQiIHI9IjIiLz48Y2lyY2xlIGN4PSIxNyIgY3k9IjQiIHI9IjIiLz48Y2lyY2xlIGN4PSI3IiBjeT0iMjAiIHI9IjIiLz48L2c%2BPC9zdmc%2B" alt="GitHub Forks"></a>
 </p>
 
 一个用 **原生 JavaScript + Canvas 2D** 实现的动态提示词可视化界面：机械蜘蛛沿文字游走、伸出触手抓取词语，词条沿弧线飞入蛛网，再分流到 `code`、`model` 和 `you` 三条分支。
@@ -35,6 +36,19 @@ npm start
 终端出现本地地址后即可访问，按 `Ctrl+C` 停止服务。Windows 用户也可以双击 `start.cmd`。
 
 普通 UI 没有第三方运行依赖，跳过 `npm install` 即可。MCP 接入需要单独安装子包依赖，见下文。推荐使用较新的 Chrome、Edge 或 Firefox；手机尺寸也有适配。服务默认只监听本机 `127.0.0.1`。
+
+## 1.3 新增：星云与能量流
+
+- **星云网络**：点击画布上方的「星云网络」，在带有远近层次的球面上查看当前词条或事件。
+- **镜头控制**：拖动旋转，调整倾角和缩放，点击「复位镜头」回到初始视角。画布获得焦点后，也可用加减键缩放、数字 0 复位；手机可横向拖动，纵向滚动页面。
+- **悬停聚焦**：指向节点，突出它的分支并查看词条、状态和已提供的分数；点击仍可打开完整详情。实时事件更新后，浮层同步状态与分数。
+- **能量流**：光点沿分支连线流动，可随时关闭。星轨视图同样支持缩放、悬停和能量流。
+
+新视图沿用当前演示、Agent 或回放的数据；连线表示分支归属，节点距离不代表语义相似度或因果关系。没有新增运行依赖，独立导出项目也包含这些功能。系统减少动态效果时停止自动旋转和粒子流动，手动镜头仍可使用。
+
+<p align="center"><picture><source media="(prefers-reduced-motion: reduce)" srcset="docs/nebula-preview.png"><img src="docs/nebula-preview.gif" width="540" alt="星云网络演示：球面节点、分支核心与流动粒子"></picture></p>
+
+这次也修复了按钮空格键误触播放、拖动释放残留、扫描后词条详情不更新等交互问题。Star 旁的 Fork 徽章会自动显示仓库数量（受徽章服务缓存影响）。
 
 ## 1.2 新增：探索网络
 

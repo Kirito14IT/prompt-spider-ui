@@ -5,7 +5,7 @@
 <p align="center">
   <a href="README.md"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-f34a87?style=flat-square" alt="简体中文"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/Language-English-3b82f6?style=flat-square" alt="English"></a>
-  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.2.3-8b5cf6?style=flat-square" alt="Version 1.2.3"></a>
+  <a href="package.json"><img src="https://img.shields.io/badge/version-v1.3.0-8b5cf6?style=flat-square" alt="Version 1.3.0"></a>
   <a href="#quick-start"><img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=flat-square&amp;logo=nodedotjs&amp;logoColor=white" alt="Node.js 20+"></a>
   <a href="app/main.js"><img src="https://img.shields.io/badge/JavaScript-ES_modules-f7df1e?style=flat-square&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ES modules"></a>
   <a href="app/renderer.js"><img src="https://img.shields.io/badge/Canvas-2D-06b6d4?style=flat-square" alt="Canvas 2D"></a>
@@ -13,6 +13,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-f0ca57?style=flat-square" alt="License MIT"></a>
   <br>
   <a href="https://github.com/Kirito14IT/prompt-spider-ui/stargazers"><img src="https://img.shields.io/github/stars/Kirito14IT/prompt-spider-ui?style=social&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iIzlhNjcwMCIgZD0ibTEyIDIgMy4xIDYuMyA2LjkgMS01IDQuOSAxLjIgNi44LTYuMi0zLjItNi4yIDMuMkw3IDE0LjIgMiA5LjNsNi45LTF6Ii8%2BPC9zdmc%2B" alt="GitHub Stars"></a>
+  <a href="https://github.com/Kirito14IT/prompt-spider-ui/forks"><img src="https://img.shields.io/github/forks/Kirito14IT/prompt-spider-ui?style=social&amp;label=Forks&amp;logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNTc2MDZhIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI%2BPHBhdGggZD0iTTcgNnYxMk0xNyA2djNhNiA2IDAgMCAxLTYgNkg3Ii8%2BPGNpcmNsZSBjeD0iNyIgY3k9IjQiIHI9IjIiLz48Y2lyY2xlIGN4PSIxNyIgY3k9IjQiIHI9IjIiLz48Y2lyY2xlIGN4PSI3IiBjeT0iMjAiIHI9IjIiLz48L2c%2BPC9zdmc%2B" alt="GitHub Forks"></a>
 </p>
 
 An animated prompt visualization built with **vanilla JavaScript and Canvas 2D**. A mechanical spider crawls over the text, reaches out to grab words, and sends them along curved paths into a web before routing them to three branches: `code`, `model`, and `you`.
@@ -34,6 +35,19 @@ npm start
 Open **http://127.0.0.1:4317** in your browser once the terminal prints the local address. Press `Ctrl+C` to stop the server. On Windows, you can also double-click `start.cmd`.
 
 The ordinary UI has no third-party runtime dependencies, so you can skip `npm install`. MCP integration requires the separate subpackage installation below. Use a recent version of Chrome, Edge, or Firefox. The layout also adapts to phone screens. By default, the server listens only on `127.0.0.1`.
+
+## New in 1.3: nebula and energy flow
+
+- **Nebula view:** select **星云网络** above the canvas to explore current words or events on a projected sphere with depth.
+- **Camera controls:** drag to rotate, adjust tilt and zoom, or reset the camera. With the canvas focused, use + / − to zoom and 0 to reset. On touch screens, horizontal dragging rotates while vertical gestures scroll the page.
+- **Hover focus:** highlight a node's route and inspect its word, status and provided score. Click for full details. Live updates also refresh a stationary tooltip.
+- **Energy flow:** toggle moving particles along route spokes. The orbital view also gains zoom, hover focus and energy flow.
+
+These views use the existing demo, Agent or replay data. Links show route membership; distances do not imply semantic similarity or causality. No runtime dependencies were added, and standalone exports include the new controls. Reduced motion freezes automatic rotation and particle movement while keeping manual camera controls available.
+
+<p align="center"><picture><source media="(prefers-reduced-motion: reduce)" srcset="docs/nebula-preview.png"><img src="docs/nebula-preview.gif" width="540" alt="Nebula network demo: spherical nodes, route cores and moving particles"></picture></p>
+
+This release also fixes Space activating scene playback while a button is focused, stale pointer gestures, and selected-word details that failed to update after scanning. The Fork badge beside Star updates from GitHub through the badge service cache.
 
 ## New in 1.2: explore the network
 

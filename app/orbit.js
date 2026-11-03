@@ -9,8 +9,9 @@ function hash(value) {
   return (h >>> 0) / 4294967296;
 }
 
-export function orbitNodes(events, rect, {angle = 0, filter = 'all', query = ''} = {}) {
+export function orbitNodes(events, rect, {angle = 0, zoom = 1, filter = 'all', query = ''} = {}) {
   const needle = query.trim().toLocaleLowerCase();
+  zoom = Math.max(1, Math.min(1.7, Number(zoom) || 1));
   return events.filter(e => ROUTES.includes(e.route)).slice(-200).map(e => {
     const id = e.id ?? e.index;
     const band = ROUTES.indexOf(e.route);
@@ -18,14 +19,16 @@ export function orbitNodes(events, rect, {angle = 0, filter = 'all', query = ''}
     const radius = .56 + hash(`radius:${id}`) * .38;
     const depth = Math.sin(phase);
     return {event:e, id, depth,
-      x:rect.x + rect.w * .5 + Math.cos(phase) * rect.w * .42 * radius,
-      y:rect.y + rect.h * (.27 + band * .23) + depth * rect.h * .10 * radius,
+      x:rect.x + rect.w * .5 + Math.cos(phase) * rect.w * .42 * radius * zoom,
+      y:rect.y + rect.h * .5 + (rect.h * (-.23 + band * .23) + depth * rect.h * .10 * radius) * zoom,
       match:(filter === 'all' || e.route === filter) && (!needle || String(e.word ?? e.displayLabel ?? e.label).toLocaleLowerCase().includes(needle))};
   }).sort((a,b) => a.depth - b.depth);
 }
 
-export function drawOrbit(ctx, events, rect, {time = 0, angle = 0, reducedMotion = false, filter = 'all', query = '', selected = null, theme, colors} = {}) {
-  const nodes = orbitNodes(events, rect, {angle:angle + (reducedMotion ? 0 : time * .045), filter, query});
+export function drawOrbit(ctx, events, rect, {time = 0, angle = 0, zoom = 1, reducedMotion = false, filter = 'all', query = '', selected = null, hovered = null, flow = true, theme, colors} = {}) {
+  zoom = Math.max(1, Math.min(1.7, Number(zoom) || 1));
+  const nodes = orbitNodes(events, rect, {angle:angle + (reducedMotion ? 0 : time * .045), zoom, filter, query});
+  const focused = nodes.find(n => n.id === (hovered ?? selected) && n.match);
   const cx = rect.x + rect.w * .5;
   ctx.save();
   ctx.beginPath(); ctx.rect(rect.x, rect.y, rect.w, rect.h); ctx.clip();
@@ -33,21 +36,28 @@ export function drawOrbit(ctx, events, rect, {time = 0, angle = 0, reducedMotion
   ctx.font = '11px Consolas, monospace';
   ctx.fillStyle = theme.muted; ctx.fillText('ORBIT / DRAG TO ROTATE', rect.x + 14, rect.y + 24);
   ROUTES.forEach((route, band) => {
-    const cy = rect.y + rect.h * (.27 + band * .23);
+    const cy = rect.y + rect.h * .5 + rect.h * (-.23 + band * .23) * zoom;
     ctx.strokeStyle = colors[route]; ctx.globalAlpha = .27; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.ellipse(cx, cy, rect.w * .4, rect.h * .095, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx, cy, rect.w * .4 * zoom, rect.h * .095 * zoom, 0, 0, Math.PI * 2); ctx.stroke();
     ctx.globalAlpha = 1; ctx.fillStyle = colors[route];
     ctx.fillText(route.toUpperCase(), rect.x + 14, cy - rect.h * .11);
     for (const node of nodes.filter(n => n.event.route === route)) {
-      ctx.globalAlpha = node.match ? .27 : .035;
+      const focus = focused?.id === node.id;
+      ctx.globalAlpha = node.match ? (focus ? .9 : focused && focused.event.route !== route ? .06 : .27) : .035;
+      ctx.lineWidth = focus ? 1.6 : 1;
       ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(node.x, node.y); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(node.x, node.y); ctx.lineTo(node.x, node.y - 9 - (node.depth + 1) * 8); ctx.stroke();
+      if (flow && node.match && (!focused || focused.event.route === route)) {
+        const phase = reducedMotion ? .5 : (time * .4 + hash(node.id)) % 1;
+        ctx.globalAlpha = .8; ctx.fillStyle = colors[route];
+        ctx.beginPath(); ctx.arc(cx + (node.x-cx)*phase, cy + (node.y-cy)*phase, focus ? 2.4 : 1.3, 0, Math.PI*2); ctx.fill();
+      }
     }
   });
   let labels = 0;
   for (const node of nodes) {
-    const active = node.id === selected;
-    ctx.globalAlpha = node.match ? .7 + (node.depth + 1) * .15 : .08;
+    const active = node.id === (hovered ?? selected);
+    ctx.globalAlpha = node.match ? (focused && focused.event.route !== node.event.route ? .15 : .7 + (node.depth + 1) * .15) : .08;
     ctx.fillStyle = colors[node.event.route];
     ctx.beginPath(); ctx.arc(node.x, node.y, active ? 6 : 2.5 + (node.depth + 1) * 1.2, 0, Math.PI * 2); ctx.fill();
     if (active) {
@@ -66,5 +76,5 @@ export function drawOrbit(ctx, events, rect, {time = 0, angle = 0, reducedMotion
   ctx.globalAlpha = 1; ctx.fillStyle = theme.muted;
   ctx.fillText(events.length ? `${nodes.filter(n=>n.match).length} / ${nodes.length} NODES` : 'WAITING FOR EVENTS', rect.x + 14, rect.y + rect.h - 16);
   ctx.restore();
-  return nodes.filter(n => n.match);
+  return nodes.filter(n => n.match && n.x >= rect.x && n.x <= rect.x+rect.w && n.y >= rect.y && n.y <= rect.y+rect.h);
 }
